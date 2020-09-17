@@ -8,7 +8,7 @@ chime.endpoint = new AWS.Endpoint('https://service.chime.aws.amazon.com/console'
 module.exports.hello = async () => {
 
   const meetingResponse = await chime.createMeeting({
-    ClientRequestToken: uuid(),
+    ClientRequestToken: 'Meeting',
     MediaRegion: 'us-west-2' // Specify the region in which to create the meeting.
   }).promise();
   
@@ -21,6 +21,11 @@ module.exports.hello = async () => {
 
   return {
     statusCode: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true,
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify(payload)
   };
 
