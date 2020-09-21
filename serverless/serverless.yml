@@ -62,7 +62,7 @@ functions:
     handler: handler.hello
     events:
      - http:
-         path: /
+         path: /{userID}
          method: get
          cors: true
 #    The following are a few example events you can configure
@@ -118,5 +118,6 @@ plugins:
 
 custom:
   serverless-offline:
+    useChildProcesses: true
     httpPort: 4000
     
